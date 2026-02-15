@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>من سيرة النبي والصحابة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-color: #f5f3ff;
+      --bg-elevated: #fdfcff;
+      --text-color: #1f172a;
+      --muted-text: #6b21a8;
+      --accent-color: #7c3aed;
+      --accent-soft: #ddd6fe;
+      --border-color: #e5e7eb;
+      --danger-color: #b91c1c;
+      --success-color: #15803d;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body[data-theme="light"] {
+      --bg-color: #f5f3ff;
+      --bg-elevated: #fdfcff;
+      --text-color: #1f172a;
+      --muted-text: #6b21a8;
+      --accent-color: #7c3aed;
+      --accent-soft: #ddd6fe;
+      --border-color: #e5e7eb;
+      --danger-color: #b91c1c;
+      --success-color: #15803d;
+    }
+
+    body[data-theme="pink"] {
+      --bg-color: #fff1f2;
+      --bg-elevated: #ffe4e6;
+      --text-color: #4a044e;
+      --muted-text: #9d174d;
+      --accent-color: #ec4899;
+      --accent-soft: #f9a8d4;
+      --border-color: #f9a8d4;
+      --danger-color: #be123c;
+      --success-color: #16a34a;
+    }
+
+    body[data-theme="blue"] {
+      --bg-color: #eff6ff;
+      --bg-elevated: #dbeafe;
+      --text-color: #020617;
+      --muted-text: #1d4ed8;
+      --accent-color: #2563eb;
+      --accent-soft: #bfdbfe;
+      --border-color: #bfdbfe;
+      --danger-color: #b91c1c;
+      --success-color: #15803d;
+    }
+
+    body[data-theme="green"] {
+      --bg-color: #ecfdf3;
+      --bg-elevated: #dcfce7;
+      --text-color: #022c22;
+      --muted-text: #166534;
+      --accent-color: #16a34a;
+      --accent-soft: #bbf7d0;
+      --border-color: #bbf7d0;
+      --danger-color: #b91c1c;
+      --success-color: #166534;
+    }
+
+    body[data-theme="classic"] {
+      --bg-color: #f5f1e6;
+      --bg-elevated: #fdfaf3;
+      --text-color: #3b2f2f;
+      --muted-text: #8b7355;
+      --accent-color: #b6862c;
+      --accent-soft: #f4e4c1;
+      --border-color: #e2d3b5;
+      --danger-color: #8b1a1a;
+      --success-color: #47624f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Welcome screen */
+    #welcome-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: radial-gradient(circle at top, var(--accent-soft), var(--bg-color));
+    }
+
+    .welcome-card {
+      max-width: 900px;
+      width: 100%;
+      background: var(--bg-elevated);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.16);
+      border: 1px solid var(--border-color);
+    }
+
+    .welcome-bismillah {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: var(--muted-text);
+    }
+
+    .welcome-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .welcome-subtitle {
+      text-align: center;
+      margin-bottom: 12px;
+      color: var(--muted-text);
+      line-height: 1.7;
+    }
+
+    .welcome-credit {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      color: var(--muted-text);
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .feature-box {
+      background: var(--bg-color);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .feature-box p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted-text);
+    }
+
+    .welcome-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent-color);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 10px 22px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 10px 18px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-radius: 999px;
+      padding: 9px 20px;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      font-size: 0.95rem;
+    }
+
+    /* Main app layout */
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      color: var(--muted-text);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--border-color);
+      color: var(--text-color);
+    }
+
+    .nav-btn.primary-nav {
+      color: var(--accent-color);
+      border-color: var(--accent-soft);
+      background: rgba(124, 58, 237, 0.08);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 16px auto 32px;
+      padding: 0 16px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--muted-text);
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .question-meta-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .difficulty-select-wrapper label {
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .difficulty-select-wrapper select {
+      margin-right: 4px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-size: 0.8rem;
+    }
+
+    .progress-bar-container {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--bg-color);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(to left, var(--accent-color), #22c55e);
+      transition: width 0.25s ease;
+    }
+
+    .progress-text {
+      font-size: 0.85rem;
+      color: var(--muted-text);
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      margin: 10px 0 12px;
+      line-height: 1.7;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: right;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      background: var(--bg-color);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.05s ease, box-shadow 0.05s ease, border-color 0.1s ease, background-color 0.1s ease;
+    }
+
+    .option-btn span.badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      color: var(--muted-text);
+      border: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .option-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 10px rgba(15, 23, 42, 0.12);
+      border-color: var(--accent-soft);
+    }
+
+    .option-btn.correct {
+      border-color: var(--success-color);
+      background: rgba(22, 163, 74, 0.06);
+    }
+
+    .option-btn.incorrect {
+      border-color: var(--danger-color);
+      background: rgba(185, 28, 28, 0.04);
+    }
+
+    .option-btn.correct span.badge {
+      border-color: var(--success-color);
+      color: var(--success-color);
+    }
+
+    .option-btn.incorrect span.badge {
+      border-color: var(--danger-color);
+      color: var(--danger-color);
+    }
+
+    .question-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      margin-top: 2px;
+      flex-wrap: wrap;
+    }
+
+    .question-footer-left {
+      display: flex;
+      gap: 6px;
+    }
+
+    .small-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      padding: 5px 12px;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .small-btn.primary {
+      border-color: var(--accent-color);
+      background: var(--accent-soft);
+      color: var(--accent-color);
+    }
+
+    .score-display {
+      font-size: 0.9rem;
+      color: var(--muted-text);
+    }
+
+    #explanation-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    #explanation-card p {
+      font-size: 0.9rem;
+      margin: 4px 0;
+      line-height: 1.7;
+    }
+
+    .explanation-block {
+      background: var(--bg-color);
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px dashed var(--border-color);
+      margin: 8px 0;
+    }
+
+    .source-line {
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      color: var(--muted-text);
+      margin-top: 8px;
+    }
+
+    .tagline span {
+      font-weight: 500;
+    }
+
+    /* Companions / Battles screen */
+    .companions-screen {
+      max-width: 1100px;
+      margin: 16px auto 24px;
+      padding: 24px 20px 28px;
+    }
+
+    .companions-intro {
+      font-size: 0.95rem;
+      color: var(--muted-text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .companions-section-title {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .cloud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .cloud-card {
+      position: relative;
+      padding: 14px 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, var(--accent-soft), var(--bg-elevated));
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      animation: floatCloud 4s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    .cloud-card h3 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+    }
+
+    .cloud-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted-text);
+    }
+
+    .cloud-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .cloud-card:nth-child(2n) {
+      animation-delay: 0.8s;
+    }
+
+    .cloud-card:nth-child(3n) {
+      animation-duration: 5s;
+    }
+
+    @keyframes floatCloud {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .battles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .battle-card {
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.06);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .battle-card h4 {
+      margin: 0 0 6px;
+      font-size: 0.95rem;
+    }
+
+    .battle-card p {
+      margin: 2px 0;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    .battle-companions {
+      color: var(--muted-text);
+      font-style: italic;
+    }
+
+    .companions-start-btn {
+      margin-top: 4px;
+      box-shadow: 0 12px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hangman game */
+    #hangman-game h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    #hangman-word {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      margin: 8px 0;
+    }
+
+    #hangman-letters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 6px 0;
+    }
+
+    .letter-btn {
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      font-size: 0.85rem;
+      min-width: 26px;
+      text-align: center;
+    }
+
+    .letter-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    #hangman-figure {
+      font-size: 0.85rem;
+      color: var(--muted-text);
+      margin-bottom: 4px;
+    }
+
+    .game-status {
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-elevated);
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.25);
+      border: 1px solid var(--border-color);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .close-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      font-size: 0.8rem;
+      padding: 2px 10px;
+    }
+
+    .resource-item {
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 6px;
+      background: var(--bg-color);
+    }
+
+    .resource-item p {
+      margin: 2px 0;
+      font-size: 0.85rem;
+    }
+
+    .resource-item a {
+      font-size: 0.85rem;
+    }
+
+    .settings-field {
+      margin-bottom: 10px;
+    }
+
+    .settings-field label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 3px;
+    }
+
+    .settings-field input[type="text"],
+    .settings-field select {
+      width: 100%;
+      padding: 5px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    .settings-field input[type="file"] {
+      font-size: 0.8rem;
+    }
+
+    .settings-field input[type="range"] {
+      width: 100%;
+    }
+
+    .settings-note {
+      font-size: 0.8rem;
+      color: var(--muted-text);
+      margin-top: 4px;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto 20px;
+      padding: 0 16px;
+      font-size: 0.8rem;
+      color: var(--muted-text);
+    }
+  </style>
+</head>
+<body data-theme="pink">
+  <!-- Welcome / Opening Screen -->
+  <section id="welcome-screen">
+    <div class="welcome-card">
+      <div class="welcome-bismillah">
+        بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيم
+      </div>
+      <h1 class="welcome-title">من سيرة النبي ﷺ وصحابته الكرام</h1>
+      <p class="welcome-subtitle">
+        موقع تفاعلي لمراجعة السيرة النبوية وأحوال الصحابة رضوان الله عليهم
+        من خلال أسئلة، مستويات صعوبة، ولعبة كلمات تعليمية.
+      </p>
+      <p class="welcome-credit">
+        مشروع لمادة <strong>السيرة النبوية</strong>، تم تطويره بالاستعانة
+        بأدوات <strong>الذكاء الاصطناعي في البرمجة والتصميم وبناء المحتوى الكامل</strong>.
+      </p>
+
+      <div class="welcome-grid">
+        <div class="feature-box">
+          <h3>أسئلة موثوقة</h3>
+          <p>٥٠ سؤالًا من القرآن الكريم، والصحيحين، وكتب السيرة المعتمدة، بمستويات سهل / متوسط / صعب.</p>
+        </div>
+        <div class="feature-box">
+          <h3>أداة دراسية ذكية</h3>
+          <p>مشروع قائم على الذكاء الاصطناعي يساعدك على التعلّم عن النبي ﷺ والناس من حوله.</p>
+        </div>
+        <div class="feature-box">
+          <h3>لعبة الكلمات</h3>
+          <p>كلمات مأخوذة من السيرة النبوية والصحابة لتثبيت المعلومات بطريقة ممتعة.</p>
+        </div>
+      </div>
+
+      <div class="welcome-actions">
+        <button id="start-btn" class="btn-primary">ابدأ التعلّم</button>
+        <button id="open-about-from-welcome" class="btn-secondary">عن المشروع</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main App -->
+  <div id="app" class="hidden">
+    <header>
+      <div class="header-inner">
+        <div class="brand-title">من سيرة النبي ﷺ والصحابة</div>
+        <nav>
+          <button class="nav-btn primary-nav" id="nav-questions">الأسئلة</button>
+          <button class="nav-btn" id="nav-games">لعبة الكلمات</button>
+          <button class="nav-btn" id="nav-resources">المصادر</button>
+          <button class="nav-btn" id="nav-about">عن المشروع</button>
+          <button class="nav-btn" id="nav-settings">الإعدادات</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- NEW: Companions & Battles screen (first page after intro) -->
+    <section id="companions-screen" class="card companions-screen">
+      <h2>صحابة ورسالة</h2>
+      <p class="companions-intro">
+        قبل أن نبدأ بالأسئلة، تعرّف سريعًا على بعض الصحابة الكرام، وعلى لمحات من الغزوات
+        التي دافعوا فيها عن النبي ﷺ وعن هذا الدين.
+      </p>
+
+      <!-- Clouds of companions -->
+      <div class="cloud-grid">
+        <div class="cloud-card" data-extra="أول من آمن من الرجال، ورفيق النبي ﷺ في الهجرة، وثاني اثنين إذ هما في الغار، وهو أول الخلفاء الراشدين.">
+          <h3>أبو بكر الصديق رضي الله عنه</h3>
+          <p>أوّل من آمن من الرجال ورفيق الهجرة.</p>
+        </div>
+        <div class="cloud-card" data-extra="لقّبه النبي ﷺ بالفاروق؛ لأنه فرّق الله به بين الحق والباطل، وكان مثالًا في العدل والقوة في الحق.">
+          <h3>عمر بن الخطاب رضي الله عنه</h3>
+          <p>الفاروق، نَصر الله به الإسلام وفتح الله في عهده بلادًا واسعة.</p>
+        </div>
+        <div class="cloud-card" data-extra="لقّب بذي النورين لأنه تزوّج ابنتي النبي ﷺ رقية ثم أم كلثوم، وفي عهده جُمِع الناس على مصحف واحد.">
+          <h3>عثمان بن عفان رضي الله عنه</h3>
+          <p>ذو النورين، أنفق من ماله كثيرًا في سبيل الله وجمع المصحف.</p>
+        </div>
+        <div class="cloud-card" data-extra="ابن عمّ النبي ﷺ وزوج فاطمة الزهراء، من أوائل من أسلم، ومن أشجع الصحابة وأعلمهم بالقضاء والجهاد.">
+          <h3>علي بن أبي طالب رضي الله عنه</h3>
+          <p>ابن عمّ النبي ﷺ وزوج فاطمة ومن أبطال الإسلام.</p>
+        </div>
+        <div class="cloud-card" data-extra="من السابقين إلى الإسلام، لاقى تعذيبًا شديدًا في مكة، ورفع الأذان بصوته الجميل في المدينة.">
+          <h3>بلال بن رباح رضي الله عنه</h3>
+          <p>المؤذّن الأول في الإسلام، صابر ثابت على التوحيد.</p>
+        </div>
+        <div class="cloud-card" data-extra="صحابي جليل من بلاد فارس، تنقّل بين الرهبان والعلماء يبحث عن الدين الحق حتى هداه الله إلى النبي ﷺ.">
+          <h3>سلمان الفارسي رضي الله عنه</h3>
+          <p>باحث عن الحق، صاحب فكرة الخندق في غزوة الأحزاب.</p>
+        </div>
+        <div class="cloud-card" data-extra="عمّ النبي ﷺ وأخوه من الرضاعة، أسلم مبكرًا، وكان من أشجع الفرسان، واستشهد في غزوة أحد رضي الله عنه.">
+          <h3>حمزة بن عبد المطلب رضي الله عنه</h3>
+          <p>أسد الله وأسد رسوله، من أبطال بدر وأحد.</p>
+        </div>
+        <div class="cloud-card" data-extra="أول زوجات النبي ﷺ وأمّ أولاده (إلا إبراهيم)، آمنت به حين كذّبه الناس، وواسته بنفسها ومالها.">
+          <h3>أم المؤمنين خديجة رضي الله عنها</h3>
+          <p>أول من آمن من النساء، سند للنبي ﷺ في بدايات الدعوة.</p>
+        </div>
+      </div>
+
+      <h3 class="companions-section-title">لمحات من الغزوات</h3>
+      <p class="companions-intro" style="margin-top:4px;">
+        بعض المحطّات الكبرى في السيرة النبوية، ودور الصحابة فيها:
+      </p>
+
+      <div class="battles-grid">
+        <div class="battle-card">
+          <h4>غزوة بدر الكبرى</h4>
+          <p>
+            أول معركة فاصلة بين المسلمين والمشركين، نصر الله فيها المؤمنين وهم قليل.
+          </p>
+          <p class="battle-companions">
+            من أبطالها: حمزة بن عبد المطلب، علي بن أبي طالب، عبيدة بن الحارث وغيرهم من السابقين.
+          </p>
+        </div>
+
+        <div class="battle-card">
+          <h4>غزوة أحد</h4>
+          <p>
+            تعلّم فيها المسلمون دروسًا عظيمة في طاعة النبي ﷺ والثبات، بعد مخالفة بعض الرماة للأمر.
+          </p>
+          <p class="battle-companions">
+            شارك فيها كبار الصحابة، واستشهد حمزة رضي الله عنه وعدد من خيرة الصحابة.
+          </p>
+        </div>
+
+        <div class="battle-card">
+          <h4>غزوة الخندق (الأحزاب)</h4>
+          <p>
+            تحالف فيها المشركون على المدينة، فاستشار النبي ﷺ سلمان الفارسي رضي الله عنه في حفر الخندق.
+          </p>
+          <p class="battle-companions">
+            ثبت المهاجرون والأنصار مع النبي ﷺ في وجه الحصار والخوف.
+          </p>
+        </div>
+
+        <div class="battle-card">
+          <h4>غزوة تبوك</h4>
+          <p>
+            تُسمّى غزوة العسرة؛ خرج المسلمون في حرّ شديد وقلة مال، واختُبر فيها الصبر والإنفاق.
+          </p>
+          <p class="battle-companions">
+            من أعظم المنفقين فيها: عثمان بن عفان وعبد الرحمن بن عوف رضي الله عنهما.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:18px;">
+        <button id="start-questions-btn" class="btn-primary companions-start-btn">
+          ابدأ الأسئلة التفاعلية
+        </button>
+      </div>
+    </section>
+
+    <main id="main-content" class="hidden">
+      <!-- Questions Column -->
+      <section class="card" id="question-card">
+        <div class="question-meta">
+          <div class="question-meta-info">
+            <div id="question-counter">السؤال 1 من 1</div>
+            <div id="question-topic">عن الصحابة</div>
+          </div>
+          <div class="difficulty-select-wrapper">
+            <label>
+              المستوى:
+              <select id="difficulty-select">
+                <option value="easy">سهل</option>
+                <option value="medium">متوسط</option>
+                <option value="hard">صعب</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progress-text">0% من الأسئلة أُجيب عنها</div>
+
+        <div class="question-text" id="question-text"></div>
+
+        <div class="options-list" id="options-list"></div>
+
+        <div class="question-footer">
+          <div class="question-footer-left">
+            <button class="small-btn" id="prev-question">السابق</button>
+            <button class="small-btn" id="next-question">التالي</button>
+          </div>
+          <div class="score-display" id="score-display">
+            الدرجة: 0 من 0
+          </div>
+        </div>
+      </section>
+
+      <!-- Explanation Column -->
+      <section class="card" id="explanation-card">
+        <h3>الشرح بعد كل سؤال</h3>
+        <p id="explanation-placeholder">
+          اختر إجابة ليظهر لك الشرح المفصّل، وقصة مختصرة، مع الإشارة إلى مصدر السؤال
+          من القرآن أو الحديث أو كتب السيرة.
+        </p>
+        <div id="explanation-content" class="hidden"></div>
+      </section>
+
+      <!-- Hangman game (replaces quiz when active) -->
+      <section class="card hidden" id="games-card"></section>
+    </main>
+
+    <footer>
+      هذا مشروع لمادة <strong>السيرة النبوية</strong>، تم بناؤه بالكامل
+      بمساعدة أدوات الذكاء الاصطناعي في <strong>البرمجة، التصميم، والمحتوى</strong>.
+    </footer>
+  </div>
+
+  <!-- Modals: About, Settings, Resources, Companion details -->
+  <div class="modal-backdrop" id="about-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>عن المشروع</h2>
+        <button class="close-btn" data-close-modal="about-modal-backdrop">إغلاق</button>
+      </div>
+      <p>
+        هذا المشروع التعليمي قائم على الذكاء الاصطناعي، صُمّم كأداة دراسية
+        لمساعدة المستخدم على التعلّم والمراجعة عن النبي محمد ﷺ والناس من حوله
+        من الصحابة الكرام، وعن رحلته الشريفة من البعثة إلى الهجرة وغيرها من
+        المحطّات.
+      </p>
+      <p>
+        يعتمد المحتوى على أسئلة من القرآن الكريم، وصحيح البخاري، وصحيح مسلم،
+        وكتب السيرة النبوية الموثوقة، مع ربط الإجابات بالشرح والقصص.
+      </p>
+      <p>
+        تم تطوير الكود، التصميم، وهيكلة الموقع بمساعدة أدوات الذكاء الاصطناعي،
+        واعتمِد كمشروع لمادة السيرة النبوية.
+      </p>
+      <p>
+        تم تطوير هذا المشروع وإعداده بواسطة
+        <strong>Nour Mamoun Awad</strong>
+        كجزء من متطلبات مادة السيرة النبوية.
+      </p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="settings-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>الإعدادات</h2>
+        <button class="close-btn" data-close-modal="settings-modal-backdrop">إغلاق</button>
+      </div>
+
+      <div class="settings-field">
+        <label for="theme-select">المظهر (الثيم):</label>
+        <select id="theme-select">
+          <option value="pink">وردي (افتراضي)</option>
+          <option value="light">بنفسجي</option>
+          <option value="blue">أزرق</option>
+          <option value="green">أخضر</option>
+          <option value="classic">طابع إسلامي كلاسيكي</option>
+        </select>
+        <div class="settings-note">
+          يتم حفظ اختيارك في المتصفح (localStorage)، مع انتقال سلس بين الألوان.
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="settings-field">
+        <label for="ambient-select">الأصوات المحيطة:</label>
+        <select id="ambient-select">
+          <option value="custom">صوت مخصّص (من جهازك)</option>
+          <option value="none">بدون</option>
+        </select>
+      </div>
+
+      <div class="settings-field">
+        <label for="volume-slider">درجة الصوت:</label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" />
+        <div class="settings-note">
+          حرّك المؤشر لضبط درجة ارتفاع أو انخفاض الصوت.
+        </div>
+      </div>
+
+      <div class="settings-field">
+        <label for="ambient-file-input">إضافة صوت محيط مخصّص (ملف صوتي):</label>
+        <input type="file" id="ambient-file-input" accept="audio/*" />
+        <div class="settings-note">
+          يمكنك اختيار ملف صوتي من جهازك (مثل مطر، أمواج بحر...). لن يتم حفظ الملف بعد إغلاق الصفحة، ويجب إعادة رفعه في كل مرة.
+        </div>
+      </div>
+
+      <!-- Ambient audio (looping) -->
+      <audio id="ambient-audio" loop preload="auto"></audio>
+
+      <hr />
+
+      <div style="display:flex;gap:8px;justify-content:flex-start;margin-top:8px;">
+        <button class="small-btn primary" id="save-settings-btn">حفظ الإعدادات</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="resources-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>المصادر المعتمدة</h2>
+        <button class="close-btn" data-close-modal="resources-modal-backdrop">إغلاق</button>
+      </div>
+
+      <div class="resource-item">
+        <p><strong>القرآن الكريم</strong></p>
+        <p>المصدر الأول والأعلى في الإسلام، تُستقى منه الآيات المتعلقة بالسيرة والأحكام.</p>
+        <p>
+          نسخة إلكترونية:
+          <a href="https://quran.com" target="_blank" rel="noopener noreferrer">quran.com</a>
+        </p>
+      </div>
+
+      <div class="resource-item">
+        <p><strong>صحيح البخاري</strong></p>
+        <p>أصحّ كتاب بعد كتاب الله، يضم أحاديث نبوية صحيحة في العقيدة والعبادات والسيرة.</p>
+        <p>
+          عرض الأحاديث:
+          <a href="https://sunnah.com/bukhari" target="_blank" rel="noopener noreferrer">sunnah.com/bukhari</a>
+        </p>
+      </div>
+
+      <div class="resource-item">
+        <p><strong>صحيح مسلم</strong></p>
+        <p>من كتب الحديث الستة، ويأتي بعد صحيح البخاري في الصحة، يضم أحاديث كثيرة في السيرة والأحكام.</p>
+        <p>
+          عرض الأحاديث:
+          <a href="https://sunnah.com/muslim" target="_blank" rel="noopener noreferrer">sunnah.com/muslim</a>
+        </p>
+      </div>
+
+      <div class="resource-item">
+        <p><strong>السيرة النبوية لابن هشام</strong></p>
+        <p>من أقدم وأشهر كتب السيرة النبوية، جمع فيه المؤلِّف الأخبار الموثوقة عن حياة النبي ﷺ.</p>
+        <p>
+          نسخة رقمية:
+          <a href="https://shamela.ws" target="_blank" rel="noopener noreferrer">shamela.ws</a>
+        </p>
+      </div>
+
+      <div class="resource-item">
+        <p><strong>السيرة النبوية لابن كثير</strong></p>
+        <p>كتاب يجمع بين السيرة والروايات المسندة، يركّز على تمحيص الأسانيد وذكر الصحيح من الأخبار.</p>
+        <p>
+          نسخة رقمية:
+          <a href="https://shamela.ws" target="_blank" rel="noopener noreferrer">shamela.ws</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Modal for companion details -->
+  <div class="modal-backdrop" id="companion-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="companion-modal-title">الصحابي الجليل</h2>
+        <button class="close-btn" data-close-modal="companion-modal-backdrop">إغلاق</button>
+      </div>
+      <p id="companion-modal-body"></p>
+    </div>
+  </div>
+
+  <!-- Hangman game template -->
+  <template id="games-template">
+    <section id="hangman-game">
+      <h3>لعبة الكلمات (كلمات من السيرة)</h3>
+      <p style="font-size:0.9rem;">
+        اقرأ التلميح، ثم اضغط على الحروف العربية لتخمين الكلمة قبل انتهاء المحاولات.
+      </p>
+      <div id="hangman-figure"></div>
+      <div id="hangman-hint"></div>
+      <div id="hangman-word"></div>
+      <div id="hangman-letters"></div>
+      <div class="game-status" id="hangman-status"></div>
+      <button class="small-btn" id="hangman-next" style="margin-top:6px;">كلمة جديدة</button>
+    </section>
+  </template>
+
+  <script>
+    // ======================
+    // Data: Questions (50)
+    // ======================
+    const baseQuestions = [
+      {
+        id: 1,
+        text: "من هو أوّل من آمن من الرجال برسول الله ﷺ؟",
+        topic: "عن الصحابة",
+        options: [
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان أبو بكر رضي الله عنه من أقرب الناس إلى النبي ﷺ قبل البعثة، فلمّا بلغه خبر الوحي صدّق من غير تردّد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "إسلام الصدّيق رضي الله عنه",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 2,
+        text: "أيّ الآيات نزلت أوّلًا من القرآن الكريم على النبي ﷺ؟",
+        topic: "القرآن الكريم",
+        options: [
+          "﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾",
+          "﴿يَا أَيُّهَا الْمُدَّثِّرُ﴾",
+          "﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾",
+          "﴿قُلْ هُوَ اللَّهُ أَحَدٌ﴾"
+        ],
+        correctIndex: 0,
+        story: "نزلت أوّل آيات من سورة العلق على النبي ﷺ وهو في غار حراء يتعبّد، فكانت بداية نزول الوحي.",
+        source: {
+          work: "القرآن الكريم",
+          detail: "سورة العلق",
+          ref: "الآيات 1-5",
+          url: "https://quran.com/96/1-5"
+        }
+      },
+      {
+        id: 3,
+        text: "من هو المؤذّن الأوّل في الإسلام الذي رفع الأذان في المدينة؟",
+        topic: "عن الصحابة",
+        options: [
+          "بلال بن رباح رضي الله عنه",
+          "سلمان الفارسي رضي الله عنه",
+          "حمزة بن عبد المطلب رضي الله عنه",
+          "خالد بن الوليد رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "اختار النبي ﷺ بلالًا رضي الله عنه ليرفع الأذان لما عُرف به من إيمان راسخ وصوت جميل.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "كتاب الأذان",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 4,
+        text: "أيّ الصحابة لُقِّب بالفاروق لِفَصله بين الحق والباطل؟",
+        topic: "عن الصحابة",
+        options: [
+          "عمر بن الخطاب رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "سمّي عمر بن الخطاب رضي الله عنه بالفاروق لأن الله فرّق به بين الحق والباطل بعد إسلامه.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "إسلام عمر وخروجه إلى المسجد الحرام",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 5,
+        text: "من أوّل من آمن من النساء برسول الله ﷺ؟",
+        topic: "عن آل بيت النبي",
+        options: [
+          "خديجة بنت خويلد رضي الله عنها",
+          "عائشة بنت أبي بكر رضي الله عنها",
+          "حفصة بنت عمر رضي الله عنها",
+          "فاطمة بنت رسول الله رضي الله عنها"
+        ],
+        correctIndex: 0,
+        story: "كانت خديجة رضي الله عنها أوّل من صدّق بالنبي ﷺ وواسَته بمالها ونفسها.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "أوّل ما أُوحي إلى النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 6,
+        text: "من أوّل من آمن من الصبيان؟",
+        topic: "عن آل بيت النبي",
+        options: [
+          "علي بن أبي طالب رضي الله عنه",
+          "عبد الله بن عباس رضي الله عنه",
+          "الحسن بن علي رضي الله عنه",
+          "زيد بن ثابت رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان علي رضي الله عنه صغيرًا في بيت النبي ﷺ، فآمن به مبكرًا.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "إسلام علي بن أبي طالب",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 7,
+        text: "من هو الصحابي الملقّب بالصّديق؟",
+        topic: "عن الصحابة",
+        options: [
+          "أبو بكر رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "لُقِّب أبو بكر رضي الله عنه بالصديق لتصديقه للنبي ﷺ في كل ما يخبر به.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "فضائل أبي بكر الصديق",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 8,
+        text: "من هو الصحابي الملقّب بذي النورين؟",
+        topic: "عن الصحابة",
+        options: [
+          "عثمان بن عفان رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "طلحة بن عبيد الله رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "سُمّي عثمان رضي الله عنه بذي النورين لأنه تزوّج ابنتي النبي ﷺ رقية ثم أم كلثوم.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "زواج عثمان من بنات النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 9,
+        text: "من هو ابن عمّ النبي ﷺ وزوج ابنته فاطمة؟",
+        topic: "عن آل بيت النبي",
+        options: [
+          "علي بن أبي طالب رضي الله عنه",
+          "جعفر بن أبي طالب رضي الله عنه",
+          "العباس بن عبد المطلب رضي الله عنه",
+          "حمزة بن عبد المطلب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان علي رضي الله عنه من أقرب الناس إلى النبي ﷺ نسبًا وبيتًا وجهادًا.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "زواج علي من فاطمة رضي الله عنهما",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 10,
+        text: "من هو عمّ النبي ﷺ الملقّب بأسد الله وأسد رسوله؟",
+        topic: "عن الصحابة",
+        options: [
+          "حمزة بن عبد المطلب رضي الله عنه",
+          "العباس بن عبد المطلب رضي الله عنه",
+          "أبو طالب",
+          "الحارث بن عبد المطلب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان حمزة رضي الله عنه من أشجع المسلمين، قُتل شهيدًا في غزوة أحد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "استشهاد حمزة في أحد",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 11,
+        text: "من هو الصحابي الملقّب بسيف الله المسلول؟",
+        topic: "عن الصحابة",
+        options: [
+          "خالد بن الوليد رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "الزبير بن العوّام رضي الله عنه",
+          "أبو عبيدة بن الجراح رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أثنى النبي ﷺ على خالد رضي الله عنه في قيادته للجيوش بعد إسلامه.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "إسلام خالد بن الوليد",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 12,
+        text: "من هو الصحابي القادم من بلاد فارس الذي بحث عن الحق حتى أسلم؟",
+        topic: "عن الصحابة",
+        options: [
+          "سلمان الفارسي رضي الله عنه",
+          "صهيب الرومي رضي الله عنه",
+          "بلال بن رباح رضي الله عنه",
+          "زيد بن حارثة رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "قطع سلمان رضي الله عنه مسافات طويلة بين الرهبان والعلماء حتى دلّوه على النبي ﷺ.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "قصة إسلام سلمان الفارسي",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 13,
+        text: "ما أوّل غزوة كبيرة قاتل فيها المسلمون قتالًا فاصلاً مع المشركين؟",
+        topic: "غزوات النبي ﷺ",
+        options: [
+          "غزوة بدر",
+          "غزوة أحد",
+          "غزوة الخندق",
+          "غزوة حنين"
+        ],
+        correctIndex: 0,
+        story: "كانت بدر يومًا فرق الله به بين الحق والباطل، ونصر فيه المسلمين نصرًا عظيمًا.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "غزوة بدر الكبرى",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 14,
+        text: "أي غزوة عُرفت في القرآن بيوم الفرقان؟",
+        topic: "القرآن والسيرة",
+        options: [
+          "غزوة بدر",
+          "غزوة أحد",
+          "غزوة تبوك",
+          "غزوة خيبر"
+        ],
+        correctIndex: 0,
+        story: "سمّى الله يوم بدر يوم الفرقان في سورة الأنفال.",
+        source: {
+          work: "القرآن الكريم",
+          detail: "سورة الأنفال",
+          ref: "الآية 41",
+          url: "https://quran.com/8/41"
+        }
+      },
+      {
+        id: 15,
+        text: "في أي مدينة وُلِد النبي ﷺ؟",
+        topic: "سيرة النبي ﷺ",
+        options: [
+          "مكة المكررة",
+          "المدينة المنورة",
+          "الطائف",
+          "بيت المقدس"
+        ],
+        correctIndex: 0,
+        story: "وُلد النبي ﷺ في مكة المكرمة في عام يُسمّى عام الفيل.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "مولد النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 16,
+        text: "إلى أي مدينة هاجر النبي ﷺ بأمر الله؟",
+        topic: "الهجرة النبوية",
+        options: [
+          "المدينة المنورة",
+          "الطائف",
+          "بيت المقدس",
+          "اليمن"
+        ],
+        correctIndex: 0,
+        story: "كانت الهجرة إلى المدينة بداية إقامة الدولة الإسلامية.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "الهجرة إلى المدينة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 17,
+        text: "في أي غار كان النبي ﷺ يتعبّد حين نزل عليه الوحي أول مرة؟",
+        topic: "سيرة النبي ﷺ",
+        options: [
+          "غار حراء",
+          "غار ثور",
+          "غار جبل أحد",
+          "غار في الطائف"
+        ],
+        correctIndex: 0,
+        story: "كان النبي ﷺ يخلو في غار حراء يتأمّل ويتعبّد قبل البعثة.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "بدء الوحي",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 18,
+        text: "ما اسم الغار الذي اختبأ فيه النبي ﷺ مع أبي بكر في طريق الهجرة؟",
+        topic: "الهجرة النبوية",
+        options: [
+          "غار ثور",
+          "غار حراء",
+          "غار أحد",
+          "غار في الطائف"
+        ],
+        correctIndex: 0,
+        story: "مكث النبي ﷺ وأبو بكر ثلاثة أيام في غار ثور حمايةً من طلب المشركين.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "الاختفاء في غار ثور",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 19,
+        text: "ما أول مسجد بُني في الإسلام بعد الهجرة؟",
+        topic: "الهجرة والسيرة",
+        options: [
+          "مسجد قباء",
+          "المسجد النبوي",
+          "المسجد الحرام",
+          "المسجد الأقصى"
+        ],
+        correctIndex: 0,
+        story: "بنى النبي ﷺ مسجد قباء حين مرّ بالمدينة في طريقه إليها مهاجرًا.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "بناء مسجد قباء",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 20,
+        text: "أي مسجد بناه النبي ﷺ في قلب المدينة المنورة؟",
+        topic: "الهجرة والسيرة",
+        options: [
+          "المسجد النبوي",
+          "مسجد قباء",
+          "مسجد القبلتين",
+          "المسجد الأقصى"
+        ],
+        correctIndex: 0,
+        story: "اختار النبي ﷺ موضع المسجد النبوي ليكون مركزًا للدعوة والقضاء والتعليم.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "بناء المسجد النبوي",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 21,
+        text: "ما اسم والد النبي محمد ﷺ؟",
+        topic: "سيرة النبي ﷺ",
+        options: [
+          "عبد الله",
+          "عبد المطلب",
+          "أبو طالب",
+          "الحارث"
+        ],
+        correctIndex: 0,
+        story: "توفّي عبد الله قبل ولادة النبي ﷺ أو بعدها بقليل.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "نسب النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 22,
+        text: "ما اسم أمّ النبي ﷺ؟",
+        topic: "سيرة النبي ﷺ",
+        options: [
+          "آمنة بنت وهب",
+          "خديجة بنت خويلد",
+          "حليمة السعدية",
+          "صفية بنت عبد المطلب"
+        ],
+        correctIndex: 0,
+        story: "توفّيت آمنة بنت وهب والنبي ﷺ صغير، فكفله جدّه ثم عمه.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "طفولة النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 23,
+        text: "من المرضِعة التي أرضعت النبي ﷺ في صغره؟",
+        topic: "سيرة النبي ﷺ",
+        options: [
+          "حليمة السعدية",
+          "خديجة بنت خويلد",
+          "آمنة بنت وهب",
+          "أم أيمن"
+        ],
+        correctIndex: 0,
+        story: "أقامت حليمة السعدية مع النبي ﷺ في البادية زمنًا ورأت من بركته خيرًا.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "حليمة السعدية",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 24,
+        text: "من الذي رافق النبي ﷺ في الهجرة إلى المدينة؟",
+        topic: "الهجرة النبوية",
+        options: [
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "قال النبي ﷺ لأبي بكر: الصحبة يا أبا بكر، فبكى من الفرح.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "الهجرة مع أبي بكر",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 25,
+        text: "من هو الخليفة الأول بعد النبي ﷺ؟",
+        topic: "الخلفاء الراشدون",
+        options: [
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "بايع الصحابة أبا بكر رضي الله عنه في السقيفة ثم في المسجد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "خلافة أبي بكر",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 26,
+        text: "من هو الخليفة الثاني من الخلفاء الراشدين؟",
+        topic: "الخلفاء الراشدون",
+        options: [
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه",
+          "معاوية بن أبي سفيان رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "امتدّت خلافة عمر رضي الله عنه بالعدل وفتح البلاد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "خلافة عمر",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 27,
+        text: "من هو الخليفة الثالث من الخلفاء الراشدين؟",
+        topic: "الخلفاء الراشدون",
+        options: [
+          "عثمان بن عفان رضي الله عنه",
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "علي بن أبي طالب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "في عهد عثمان رضي الله عنه جُمِع الناس على مصحف واحد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "جمع المصحف في عهد عثمان",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 28,
+        text: "من هو الخليفة الرابع من الخلفاء الراشدين؟",
+        topic: "الخلفاء الراشدون",
+        options: [
+          "علي بن أبي طالب رضي الله عنه",
+          "الحسن بن علي رضي الله عنه",
+          "معاوية بن أبي سفيان رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "تولّى علي رضي الله عنه الخلافة في زمن فتن عظيمة.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "خلافة علي بن أبي طالب",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 29,
+        text: "من هو الصحابي الملقّب بترجمان القرآن؟",
+        topic: "عن الصحابة",
+        options: [
+          "عبد الله بن عباس رضي الله عنه",
+          "عبد الله بن عمر رضي الله عنه",
+          "عبد الله بن مسعود رضي الله عنه",
+          "زيد بن ثابت رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "دعا له النبي ﷺ: اللهم فقّهه في الدين وعلّمه التأويل.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "فضائل ابن عباس",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 30,
+        text: "من هو الصحابي الذي كان يكتب الوحي ويجمع القرآن في عهد أبي بكر؟",
+        topic: "القرآن الكريم",
+        options: [
+          "زيد بن ثابت رضي الله عنه",
+          "أبو هريرة رضي الله عنه",
+          "أنس بن مالك رضي الله عنه",
+          "معاذ بن جبل رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كلّف أبو بكر رضي الله عنه زيد بن ثابت بجمع القرآن في مصحف واحد.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "جمع القرآن",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 31,
+        text: "من هو الصحابي الملقّب بأمين هذه الأمة؟",
+        topic: "عن الصحابة",
+        options: [
+          "أبو عبيدة بن الجراح رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "طلحة بن عبيد الله رضي الله عنه",
+          "الزبير بن العوّام رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أثنى النبي ﷺ على أمانة أبي عبيدة وجهاده.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "مناقب أبي عبيدة",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 32,
+        text: "من هو الصحابي الذي نام في فراش النبي ﷺ ليلة الهجرة؟",
+        topic: "الهجرة النبوية",
+        options: [
+          "علي بن أبي طالب رضي الله عنه",
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "عثمان بن عفان رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "بات علي رضي الله عنه في فراش النبي ﷺ تضحيةً بنفسه ليحميه.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "ليلة الهجرة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 33,
+        text: "أي بلد كانت قبلة المسلمين في أوّل الإسلام قبل تحويلها؟",
+        topic: "القرآن الكريم",
+        options: [
+          "بيت المقدس",
+          "مكة المكرمة",
+          "المدينة المنورة",
+          "الطائف"
+        ],
+        correctIndex: 0,
+        story: "كانت القبلة إلى بيت المقدس ثم حُوِّلت إلى الكعبة بأمر الله.",
+        source: {
+          work: "القرآن الكريم",
+          detail: "سورة البقرة",
+          ref: "",
+          url: "https://quran.com/2"
+        }
+      },
+      {
+        id: 34,
+        text: "من هو الصحابي الذي كان سفيرًا للنبي ﷺ إلى أهل المدينة قبل الهجرة؟",
+        topic: "عن الصحابة",
+        options: [
+          "مصعب بن عمير رضي الله عنه",
+          "عبد الله بن رواحة رضي الله عنه",
+          "زيد بن حارثة رضي الله عنه",
+          "حنظلة بن أبي عامر رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أرسل النبي ﷺ مصعب بن عمير ليعلّم الناس القرآن في المدينة قبل الهجرة.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "بعثة مصعب إلى المدينة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 35,
+        text: "ما اسم البيعة التي وقعت تحت الشجرة مع الصحابة رضي الله عنهم؟",
+        topic: "السيرة النبوية",
+        options: [
+          "بيعة الرضوان",
+          "بيعة العقبة",
+          "بيعة الإسلام",
+          "بيعة الإيمان"
+        ],
+        correctIndex: 0,
+        story: "أثنى الله على أهل بيعة الرضوان في سورة الفتح.",
+        source: {
+          work: "القرآن الكريم",
+          detail: "سورة الفتح",
+          ref: "",
+          url: "https://quran.com/48"
+        }
+      },
+      {
+        id: 36,
+        text: "من هو الصحابي الذي رأى الأذان في منامه فأقرّه النبي ﷺ؟",
+        topic: "عن الصحابة",
+        options: [
+          "عبد الله بن زيد رضي الله عنه",
+          "بلال بن رباح رضي الله عنه",
+          "أبو موسى الأشعري رضي الله عنه",
+          "أبو هريرة رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أُري عبد الله بن زيد صيغة الأذان في المنام، فوافقه النبي ﷺ.",
+        source: {
+          work: "سنن أبي داود",
+          detail: "باب بدء الأذان",
+          ref: "",
+          url: "https://sunnah.com/abudawud"
+        }
+      },
+      {
+        id: 37,
+        text: "من هو الصحابي الذي اشتهر بكثرة رواية الحديث عن النبي ﷺ؟",
+        topic: "الحديث النبوي",
+        options: [
+          "أبو هريرة رضي الله عنه",
+          "عبد الله بن عمر رضي الله عنه",
+          "أنس بن مالك رضي الله عنه",
+          "عبد الله بن عباس رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "لازم أبو هريرة النبي ﷺ وحفظ عنه أحاديث كثيرة.",
+        source: {
+          work: "صحيح البخاري",
+          detail: "كتاب العلم",
+          ref: "",
+          url: "https://sunnah.com/bukhari"
+        }
+      },
+      {
+        id: 38,
+        text: "من هو الصحابي خادم النبي ﷺ الذي خدمه عشر سنين؟",
+        topic: "عن الصحابة",
+        options: [
+          "أنس بن مالك رضي الله عنه",
+          "زيد بن حارثة رضي الله عنه",
+          "عبد الله بن عباس رضي الله عنه",
+          "أبو ذر الغفاري رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "خدم أنس النبي ﷺ صغيرًا، وكان يرى في معاملته رحمة عظيمة.",
+        source: {
+          work: "صحيح مسلم",
+          detail: "فضائل النبي ﷺ",
+          ref: "",
+          url: "https://sunnah.com/muslim"
+        }
+      },
+      {
+        id: 39,
+        text: "من الصحابي الذي اشتهر بالقضاء بين الناس في حياة النبي ﷺ وبعده؟",
+        topic: "عن الصحابة",
+        options: [
+          "معاذ بن جبل رضي الله عنه",
+          "سعد بن معاذ رضي الله عنه",
+          "زيد بن ثابت رضي الله عنه",
+          "عبد الله بن مسعود رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "بعث النبي ﷺ معاذًا إلى اليمن ليعلّمهم الدين ويقضي بينهم.",
+        source: {
+          work: "سنن الترمذي",
+          detail: "بعث معاذ إلى اليمن",
+          ref: "",
+          url: "https://sunnah.com/tirmidhi"
+        }
+      },
+      {
+        id: 40,
+        text: "أي غزوة كانت ثاني المعارك الكبرى بعد بدر؟",
+        topic: "غزوات النبي ﷺ",
+        options: [
+          "غزوة أحد",
+          "غزوة الخندق",
+          "غزوة حنين",
+          "غزوة تبوك"
+        ],
+        correctIndex: 0,
+        story: "في أحد ابتلي المسلمون وتعلّموا دروسًا عظيمة في الطاعة.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "غزوة أحد",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 41,
+        text: "كم تقريبًا كانت سنوات الدعوة في مكة قبل الهجرة؟",
+        topic: "السيرة النبوية",
+        options: [
+          "ثلاث عشرة سنة",
+          "عشر سنوات",
+          "خمس سنوات",
+          "عشرون سنة"
+        ],
+        correctIndex: 0,
+        story: "مكث النبي ﷺ في مكة يدعو قومه ثلاث عشرة سنة.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "مرحلة مكة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 42,
+        text: "من هي ابنة النبي ﷺ التي تزوّجها عثمان ثم توفّيت، فتزوّج أختها؟",
+        topic: "عن آل بيت النبي",
+        options: [
+          "رقية ثم أم كلثوم رضي الله عنهما",
+          "فاطمة ثم زينب رضي الله عنهما",
+          "فاطمة ثم رقية رضي الله عنهما",
+          "زينب ثم أم كلثوم رضي الله عنهما"
+        ],
+        correctIndex: 0,
+        story: "اجتمع لعثمان رضي الله عنه شرف مصاهرة النبي ﷺ مرتين.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "زواج عثمان ببنات النبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 43,
+        text: "من هي ابنة النبي ﷺ التي تزوّجها علي بن أبي طالب رضي الله عنه؟",
+        topic: "عن آل بيت النبي",
+        options: [
+          "فاطمة الزهراء رضي الله عنها",
+          "رقية رضي الله عنها",
+          "أم كلثوم رضي الله عنها",
+          "زينب رضي الله عنها"
+        ],
+        correctIndex: 0,
+        story: "كانت فاطمة رضي الله عنها من أحبّ أهل بيت النبي ﷺ إليه.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "زواج علي من فاطمة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 44,
+        text: "من الصحابي الذي قِيل في قصته مع النبي ﷺ وسراقة بن مالك: باع نفسه لله؟",
+        topic: "الهجرة النبوية",
+        options: [
+          "أبو بكر الصديق رضي الله عنه",
+          "عمر بن الخطاب رضي الله عنه",
+          "الزبير بن العوام رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "ثبت أبو بكر مع النبي ﷺ رغم المطاردة والبحث عنهم.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "مطاردة سراقة للنبي ﷺ",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 45,
+        text: "أي سورة في القرآن تذكر نصر الله في فتح مكة: ﴿إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ﴾؟",
+        topic: "القرآن الكريم",
+        options: [
+          "سورة النصر",
+          "سورة الفتح",
+          "سورة التوبة",
+          "سورة محمد"
+        ],
+        correctIndex: 0,
+        story: "أشار الصحابة إلى أن نزول سورة النصر نعيٌ للنبي ﷺ بقرب أجله.",
+        source: {
+          work: "القرآن الكريم",
+          detail: "سورة النصر",
+          ref: "",
+          url: "https://quran.com/110"
+        }
+      },
+      {
+        id: 46,
+        text: "من الصحابي الذي كان يُعرف بكثرة إنفاقه في تجهيز جيش العسرة؟",
+        topic: "عن الصحابة",
+        options: [
+          "عثمان بن عفان رضي الله عنه",
+          "عبد الرحمن بن عوف رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "طلحة بن عبيد الله رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أنفق عثمان رضي الله عنه أموالًا كثيرة في تجهيز جيش تبوك.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "غزوة تبوك",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 47,
+        text: "من الصحابي الذي قاد المسلمين في غزوة مؤتة بعد استشهاد زيد وجعفر؟",
+        topic: "عن الصحابة",
+        options: [
+          "خالد بن الوليد رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "أبو عبيدة بن الجراح رضي الله عنه",
+          "الزبير بن العوام رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "أخذ خالد اللواء بعد استشهاد الأمراء وقاد الجيش بحكمة.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "غزوة مؤتة",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 48,
+        text: "من الصحابي الذي اشتهر بصدق لسانه حتى قيل: ما طلعت الشمس على رجل أصدق منه؟",
+        topic: "عن الصحابة",
+        options: [
+          "أبو ذر الغفاري رضي الله عنه",
+          "بلال بن رباح رضي الله عنه",
+          "أبو هريرة رضي الله عنه",
+          "عبد الله بن عمر رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان أبو ذر رضي الله عنه زاهدًا صادقًا في قوله وفعله.",
+        source: {
+          work: "الحديث النبوي",
+          detail: "فضائل أبي ذر",
+          ref: "",
+          url: "https://sunnah.com"
+        }
+      },
+      {
+        id: 49,
+        text: "من الصحابي الذي قيل عنه في القتال: رجل بألف رجل؟",
+        topic: "عن الصحابة",
+        options: [
+          "الزبير بن العوام رضي الله عنه",
+          "سعد بن أبي وقاص رضي الله عنه",
+          "أبو عبيدة بن الجراح رضي الله عنه",
+          "خالد بن الوليد رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "كان الزبير من أوائل من أسلم ومن أبطال الجهاد.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "مناقب الزبير بن العوام",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      },
+      {
+        id: 50,
+        text: "من الصحابي الذي شهد بيعة العقبة الثانية وكان من الأنصار؟",
+        topic: "عن الصحابة",
+        options: [
+          "سعد بن معاذ رضي الله عنه",
+          "بلال بن رباح رضي الله عنه",
+          "خالد بن الوليد رضي الله عنه",
+          "أبو هريرة رضي الله عنه"
+        ],
+        correctIndex: 0,
+        story: "بايع الأنصار النبي ﷺ على النصرة والحماية كما يحمون أنفسهم وأهليهم.",
+        source: {
+          work: "السيرة النبوية",
+          detail: "بيعة العقبة الثانية",
+          ref: "",
+          url: "https://shamela.ws"
+        }
+      }
+    ];
+
+    // Assign difficulty
+    baseQuestions.forEach((q, idx) => {
+      const n = idx + 1;
+      if (n <= 20) q.difficulty = "easy";
+      else if (n <= 35) q.difficulty = "medium";
+      else q.difficulty = "hard";
+      q.userAnswer = null;
+      q.correct = null;
+      q.shuffledIndices = null;
+    });
+
+    // ======================
+    // State
+    // ======================
+    let questions = [];
+    let currentDifficulty = "easy";
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answeredCount = 0;
+
+    let ambientChoice = "none"; // default: no sound
+    let ambientVolume = 0.4;
+    let customAmbientUrl = null; // custom ambience (per session)
+
+    let gamesMounted = false;
+    let isGamesMode = false;
+
+    // Word bank for hangman
+    const wordBank = [
+      { word: "بدر", hint: "أول معركة كبيرة بين المسلمين والمشركين" },
+      { word: "الهجرة", hint: "انتقال النبي ﷺ وأصحابه إلى المدينة" },
+      { word: "المدينة", hint: "المدينة التي هاجر إليها النبي ﷺ" },
+      { word: "خديجة", hint: "أول من آمنت من النساء" },
+      { word: "بلال", hint: "المؤذن الأول في الإسلام" },
+      { word: "حراء", hint: "الغار الذي كان النبي ﷺ يتعبّد فيه قبل البعثة" },
+      { word: "الفاروق", hint: "لقب عمر بن الخطاب رضي الله عنه" },
+      { word: "الصديق", hint: "لقب أبي بكر رضي الله عنه" },
+      { word: "ذوالنورين", hint: "لقب عثمان بن عفان رضي الله عنه" },
+      { word: "أحد", hint: "غزوة وقعت بعد بدر وابتُلي فيها المسلمون" },
+      { word: "الخندق", hint: "غزوة حفر فيها المسلمون خندقًا حول المدينة" },
+      { word: "تبوك", hint: "آخر غزوة غزاها النبي ﷺ" },
+      { word: "مؤتة", hint: "معركة استُشهد فيها زيد وجعفر بن أبي طالب" },
+      { word: "حنين", hint: "غزوة بعد فتح مكة ضد هوازن وثقيف" },
+      { word: "خيبر", hint: "حصن يهودي فتحه المسلمون بقيادة النبي ﷺ" },
+      { word: "الأنصار", hint: "أهل المدينة الذين نصروا النبي ﷺ" },
+      { word: "المهاجرون", hint: "الذين هاجروا من مكة إلى المدينة" },
+      { word: "قباء", hint: "أول مسجد بُني في الإسلام" },
+      { word: "الرضوان", hint: "بيعة وقعت تحت الشجرة" },
+      { word: "القبلتين", hint: "مسجد حُوِّلت فيه القبلة من بيت المقدس للكعبة" },
+      { word: "سلمان", hint: "صحابي فارسي بحث عن الحق حتى أسلم" },
+      { word: "حمزة", hint: "عمّ النبي ﷺ الملقب بأسد الله" },
+      { word: "خالد", hint: "سيف الله المسلول" },
+      { word: "الزبير", hint: "صحابي قيل عنه: رجل بألف رجل" },
+      { word: "معاذ", hint: "صحابي اشتهر بالقضاء وبُعث إلى اليمن" },
+      { word: "أبوهريرة", hint: "أكثر الصحابة رواية للحديث" },
+      { word: "أنس", hint: "خادم النبي ﷺ الذي خدمه عشر سنين" },
+      { word: "ابنعباس", hint: "ترجمان القرآن وحبر الأمة" },
+      { word: "زيدبنثابت", hint: "كاتب الوحي وجامع القرآن" },
+      { word: "أبوعبيدة", hint: "أمين هذه الأمة" }
+    ];
+
+    // Track used words to avoid repetition
+    let roundsSinceUsed = {};
+
+    // Arabic alphabet for hangman
+    const arabicLetters = "ابتثجحخدذرزسشصضطظعغفقكلمنهويآأإءؤئىة";
+
+    // Hangman state
+    let hangmanCurrentIndex = 0;
+    let hangmanRemaining = 6;
+    let hangmanGuessed = new Set();
+
+    const $ = (id) => document.getElementById(id);
+
+    // ======================
+    // Theme
+    // ======================
+    function setTheme(theme) {
+      const body = document.body;
+      if (!["light", "pink", "blue", "green", "classic"].includes(theme)) {
+        theme = "pink"; // fallback is pink (default)
+      }
+      body.setAttribute("data-theme", theme);
+      localStorage.setItem("quizTheme", theme);
+      const themeSelect = $("theme-select");
+      if (themeSelect) {
+        themeSelect.value = theme;
+      }
+    }
+
+    // ======================
+    // Questions rendering (with randomized options)
+    // ======================
+    function buildQuestionsForDifficulty() {
+      questions = baseQuestions.filter((q) => q.difficulty === currentDifficulty);
+      questions.forEach((q) => {
+        q.userAnswer = null;
+        q.correct = null;
+        q.shuffledIndices = null;
+      });
+      currentQuestionIndex = 0;
+      score = 0;
+      answeredCount = 0;
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      if (!questions.length) return;
+
+      const question = questions[currentQuestionIndex];
+      const questionTextEl = $("question-text");
+      const optionsListEl = $("options-list");
+      const counterEl = $("question-counter");
+      const topicEl = $("question-topic");
+
+      if (!questionTextEl || !optionsListEl) return;
+
+      questionTextEl.textContent = question.text;
+      topicEl.textContent = question.topic || "عن السيرة";
+
+      counterEl.textContent =
+        "السؤال " + (currentQuestionIndex + 1) + " من " + questions.length;
+
+      if (!question.shuffledIndices) {
+        question.shuffledIndices = question.options.map((_, i) => i);
+        for (let i = question.shuffledIndices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [question.shuffledIndices[i], question.shuffledIndices[j]] = [
+            question.shuffledIndices[j],
+            question.shuffledIndices[i]
+          ];
+        }
+      }
+
+      optionsListEl.innerHTML = "";
+
+      question.shuffledIndices.forEach((optIndex, displayIndex) => {
+        const optText = question.options[optIndex];
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.setAttribute("type", "button");
+        btn.dataset.displayIndex = displayIndex;
+        btn.dataset.underlyingIndex = optIndex;
+        btn.innerHTML = `
+          <span>${optText}</span>
+          <span class="badge">اختر</span>
+        `;
+
+        if (question.userAnswer !== null) {
+          const badge = btn.querySelector(".badge");
+          if (optIndex === question.correctIndex) {
+            btn.classList.add("correct");
+            badge.textContent = "صحيح";
+          } else if (
+            optIndex === question.userAnswer &&
+            question.correct === false
+          ) {
+            btn.classList.add("incorrect");
+            badge.textContent = "إجابتك";
+          }
+        }
+
+        btn.addEventListener("click", () => handleAnswer(displayIndex));
+        optionsListEl.appendChild(btn);
+      });
+
+      updateScoreAndProgressUI();
+
+      const placeholder = $("explanation-placeholder");
+      const contentEl = $("explanation-content");
+      if (placeholder) placeholder.classList.remove("hidden");
+      if (contentEl) {
+        contentEl.classList.add("hidden");
+        contentEl.innerHTML = "";
+      }
+    }
+
+    function updateScoreAndProgressUI() {
+      const scoreDisplay = $("score-display");
+      const progressBar = $("progress-bar");
+      const progressText = $("progress-text");
+
+      const total = questions.length || 0;
+      const percent = total ? Math.round((answeredCount / total) * 100) : 0;
+
+      if (scoreDisplay) {
+        scoreDisplay.textContent = "الدرجة: " + score + " من " + total;
+      }
+
+      if (progressBar) progressBar.style.width = percent + "%";
+      if (progressText) {
+        progressText.textContent = percent + "% من الأسئلة أُجيب عنها";
+      }
+    }
+
+    function handleAnswer(displayIndex) {
+      const question = questions[currentQuestionIndex];
+      if (question.userAnswer !== null) return;
+
+      const underlyingIndex = question.shuffledIndices[displayIndex];
+      question.userAnswer = underlyingIndex;
+      const isCorrect = underlyingIndex === question.correctIndex;
+      question.correct = isCorrect;
+
+      if (isCorrect) score++;
+      answeredCount++;
+
+      const optionsButtons = $("options-list").querySelectorAll(".option-btn");
+      optionsButtons.forEach((btn) => {
+        const optIndex = Number(btn.dataset.underlyingIndex);
+        const badge = btn.querySelector(".badge");
+        if (optIndex === question.correctIndex) {
+          btn.classList.add("correct");
+          badge.textContent = "صحيح";
+        } else if (optIndex === question.userAnswer && !isCorrect) {
+          btn.classList.add("incorrect");
+          badge.textContent = "إجابتك";
+        } else {
+          badge.textContent = "اختر";
+        }
+      });
+
+      updateScoreAndProgressUI();
+      showExplanation(question, isCorrect, underlyingIndex);
+    }
+
+    function showExplanation(question, isCorrect, selectedIndex) {
+      const placeholder = $("explanation-placeholder");
+      const contentEl = $("explanation-content");
+      if (!contentEl) return;
+
+      if (placeholder) placeholder.classList.add("hidden");
+      contentEl.classList.remove("hidden");
+
+      const selectedText = question.options[selectedIndex];
+      const correctAnswer = question.options[question.correctIndex];
+
+      const correctnessText = isCorrect
+        ? "إجابة صحيحة، أحسنت!"
+        : "إجابة غير صحيحة. اخترت: «" + selectedText + "»";
+
+      let storyHtml = "";
+      if (question.story) {
+        storyHtml =
+          '<div class="explanation-block"><strong>الشرح:</strong> ' +
+          question.story +
+          "</div>";
+      }
+
+      let sourceHtml = "";
+      if (question.source && question.source.work && question.source.url) {
+        const src = question.source;
+        const parts = [src.work];
+        if (src.detail) parts.push(src.detail);
+        if (src.ref) parts.push(src.ref);
+        const label = parts.join(" - ");
+
+        sourceHtml = `
+          <p class="source-line">
+            <strong>المصدر:</strong>
+            <a href="${src.url}" target="_blank" rel="noopener noreferrer">
+              ${label}
+            </a>
+          </p>
+        `;
+      }
+
+      contentEl.innerHTML = `
+        <p>${correctnessText}</p>
+        <p>الإجابة الصحيحة: <strong>${correctAnswer}</strong></p>
+        ${storyHtml}
+        ${sourceHtml}
+      `;
+    }
+
+    function goToNextQuestion() {
+      if (!questions.length) return;
+      currentQuestionIndex =
+        (currentQuestionIndex + 1) % questions.length;
+      renderQuestion();
+    }
+
+    function goToPrevQuestion() {
+      if (!questions.length) return;
+      currentQuestionIndex =
+        (currentQuestionIndex - 1 + questions.length) % questions.length;
+      renderQuestion();
+    }
+
+    // ======================
+    // Ambient audio (custom / none)
+    // ======================
+    function applyAmbientAudioSettings() {
+      const audioEl = $("ambient-audio");
+      if (!audioEl) return;
+
+      audioEl.pause();
+
+      if (ambientChoice === "custom" && customAmbientUrl) {
+        audioEl.src = customAmbientUrl;
+      } else {
+        audioEl.removeAttribute("src");
+        audioEl.load();
+        return;
+      }
+
+      audioEl.volume = ambientVolume;
+      audioEl.play().catch(() => {
+        // autoplay might be blocked
+      });
+    }
+
+    function handleAmbientChange() {
+      const select = $("ambient-select");
+      const slider = $("volume-slider");
+      if (!select || !slider) return;
+
+      ambientChoice = select.value;
+      ambientVolume = parseFloat(slider.value) || 0;
+
+      localStorage.setItem("ambientChoice", ambientChoice);
+      localStorage.setItem("ambientVolume", String(ambientVolume));
+
+      applyAmbientAudioSettings();
+    }
+
+    function handleAmbientFileUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      if (customAmbientUrl) {
+        URL.revokeObjectURL(customAmbientUrl);
+      }
+
+      customAmbientUrl = URL.createObjectURL(file);
+      ambientChoice = "custom";
+
+      const ambientSelect = $("ambient-select");
+      if (ambientSelect) {
+        ambientSelect.value = "custom";
+      }
+
+      localStorage.setItem("ambientChoice", ambientChoice);
+
+      applyAmbientAudioSettings();
+    }
+
+    // ======================
+    // Modals
+    // ======================
+    function openModal(id) {
+      const backdrop = $(id);
+      if (backdrop) backdrop.classList.add("active");
+    }
+
+    function closeModal(id) {
+      const backdrop = $(id);
+      if (backdrop) backdrop.classList.remove("active");
+    }
+
+    // ======================
+    // Hangman Game
+    // ======================
+    function mountGamesIfNeeded() {
+      if (gamesMounted) return;
+      gamesMounted = true;
+
+      const gamesCard = $("games-card");
+      const tmpl = $("games-template");
+      if (!gamesCard || !tmpl) return;
+
+      const clone = tmpl.content.cloneNode(true);
+      gamesCard.appendChild(clone);
+
+      initHangmanGame();
+    }
+
+    function initHangmanGame() {
+      const figureEl = $("hangman-figure");
+      const hintEl = $("hangman-hint");
+      const wordEl = $("hangman-word");
+      const lettersEl = $("hangman-letters");
+      const statusEl = $("hangman-status");
+      const nextBtn = $("hangman-next");
+      if (!figureEl || !hintEl || !wordEl || !lettersEl || !statusEl || !nextBtn) return;
+
+      function pickRandomWord() {
+        Object.keys(roundsSinceUsed).forEach(key => {
+          roundsSinceUsed[key]++;
+        });
+
+        const availableWords = wordBank
+          .map((w, idx) => ({ ...w, originalIndex: idx }))
+          .filter((_, idx) => !roundsSinceUsed[idx] || roundsSinceUsed[idx] >= 5);
+
+        let selectedWord;
+        if (availableWords.length > 0) {
+          const randomAvailable = availableWords[Math.floor(Math.random() * availableWords.length)];
+          selectedWord = randomAvailable.originalIndex;
+        } else {
+          roundsSinceUsed = {};
+          selectedWord = Math.floor(Math.random() * wordBank.length);
+        }
+
+        hangmanCurrentIndex = selectedWord;
+        roundsSinceUsed[selectedWord] = 0;
+        hangmanRemaining = 6;
+        hangmanGuessed = new Set();
+      }
+
+      function renderWord() {
+        const current = wordBank[hangmanCurrentIndex];
+        hintEl.textContent = "التلميح: " + current.hint;
+        let mask = "";
+        for (const ch of current.word) {
+          if (hangmanGuessed.has(ch)) {
+            mask += ch + " ";
+          } else {
+            mask += "ـ ";
+          }
+        }
+        wordEl.textContent = mask.trim();
+      }
+
+      function renderFigure() {
+        figureEl.textContent =
+          "المحاولات المتبقية: " + hangmanRemaining + " من 6";
+      }
+
+      function renderLetters() {
+        lettersEl.innerHTML = "";
+        for (const ch of arabicLetters) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "letter-btn";
+          btn.textContent = ch;
+          btn.disabled = hangmanGuessed.has(ch) || hangmanRemaining === 0;
+          btn.addEventListener("click", () => {
+            handleGuess(ch);
+          });
+          lettersEl.appendChild(btn);
+        }
+      }
+
+      function checkWin() {
+        const current = wordBank[hangmanCurrentIndex];
+        for (const ch of current.word) {
+          if (!hangmanGuessed.has(ch)) return false;
+        }
+        return true;
+      }
+
+      function handleGuess(ch) {
+        if (hangmanGuessed.has(ch) || hangmanRemaining === 0) return;
+        hangmanGuessed.add(ch);
+        const current = wordBank[hangmanCurrentIndex];
+
+        if (!current.word.includes(ch)) {
+          hangmanRemaining--;
+        }
+
+        renderFigure();
+        renderWord();
+        renderLetters();
+
+        if (checkWin()) {
+          statusEl.textContent =
+            "أحسنت! اكتشفت الكلمة: " + current.word + ". اضغط \"كلمة جديدة\" لجولة أخرى.";
+        } else if (hangmanRemaining === 0) {
+          statusEl.textContent =
+            "انتهت المحاولات! الكلمة كانت: " + current.word + ". اضغط \"كلمة جديدة\" للمحاولة مرة أخرى.";
+        } else {
+          statusEl.textContent = "";
+        }
+      }
+
+      function startNewHangmanRound() {
+        pickRandomWord();
+        renderFigure();
+        renderWord();
+        renderLetters();
+        statusEl.textContent = "";
+      }
+
+      nextBtn.addEventListener("click", () => {
+        startNewHangmanRound();
+      });
+
+      startNewHangmanRound();
+    }
+
+    function showGame() {
+      mountGamesIfNeeded();
+      const questionCard = $("question-card");
+      const explanationCard = $("explanation-card");
+      const gamesCard = $("games-card");
+      const companionsScreen = $("companions-screen");
+      const mainContent = $("main-content");
+      if (!questionCard || !explanationCard || !gamesCard) return;
+
+      if (companionsScreen && !companionsScreen.classList.contains("hidden")) {
+        companionsScreen.classList.add("hidden");
+        if (mainContent) mainContent.classList.remove("hidden");
+      }
+
+      isGamesMode = true;
+      questionCard.classList.add("hidden");
+      explanationCard.classList.add("hidden");
+      gamesCard.classList.remove("hidden");
+
+      $("nav-questions").classList.remove("primary-nav");
+      $("nav-games").classList.add("primary-nav");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function focusQuestions() {
+      const questionCard = $("question-card");
+      const explanationCard = $("explanation-card");
+      const gamesCard = $("games-card");
+      const companionsScreen = $("companions-screen");
+      const mainContent = $("main-content");
+      if (!questionCard || !explanationCard || !gamesCard) return;
+
+      if (companionsScreen && !companionsScreen.classList.contains("hidden")) {
+        companionsScreen.classList.add("hidden");
+        if (mainContent) mainContent.classList.remove("hidden");
+      }
+
+      isGamesMode = false;
+      questionCard.classList.remove("hidden");
+      explanationCard.classList.remove("hidden");
+      gamesCard.classList.add("hidden");
+
+      $("nav-games").classList.remove("primary-nav");
+      $("nav-questions").classList.add("primary-nav");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // ======================
+    // Settings
+    // ======================
+    function saveSettings() {
+      const themeSelect = $("theme-select");
+      const ambientSelect = $("ambient-select");
+      const volumeSlider = $("volume-slider");
+
+      if (themeSelect) {
+        setTheme(themeSelect.value);
+      }
+
+      if (ambientSelect && volumeSlider) {
+        ambientChoice = ambientSelect.value;
+        ambientVolume = parseFloat(volumeSlider.value) || 0;
+        localStorage.setItem("ambientChoice", ambientChoice);
+        localStorage.setItem("ambientVolume", String(ambientVolume));
+        applyAmbientAudioSettings();
+      }
+
+      alert("تم حفظ الإعدادات.");
+    }
+
+    // ======================
+    // Load settings & startup
+    // ======================
+    function loadInitialSettings() {
+      const storedTheme = localStorage.getItem("quizTheme") || "pink";
+      setTheme(storedTheme);
+
+      const storedAmbient = localStorage.getItem("ambientChoice");
+      ambientChoice = storedAmbient || "none";
+
+      const storedVolume = parseFloat(localStorage.getItem("ambientVolume"));
+      if (!isNaN(storedVolume)) {
+        ambientVolume = storedVolume;
+      }
+
+      const storedDifficulty = localStorage.getItem("quizDifficulty") || "easy";
+      currentDifficulty = ["easy", "medium", "hard"].includes(storedDifficulty)
+        ? storedDifficulty
+        : "easy";
+
+      const themeSelect = $("theme-select");
+      const ambientSelect = $("ambient-select");
+      const volumeSlider = $("volume-slider");
+      const difficultySelect = $("difficulty-select");
+
+      if (themeSelect) themeSelect.value = storedTheme;
+      if (ambientSelect) ambientSelect.value = ambientChoice;
+      if (volumeSlider) volumeSlider.value = ambientVolume;
+      if (difficultySelect) difficultySelect.value = currentDifficulty;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadInitialSettings();
+      buildQuestionsForDifficulty();
+
+      const startBtn = $("start-btn");
+      const app = $("app");
+      const welcome = $("welcome-screen");
+      startBtn.addEventListener("click", () => {
+        welcome.classList.add("hidden");
+        app.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (ambientChoice === "custom") {
+          applyAmbientAudioSettings();
+        }
+      });
+
+      $("open-about-from-welcome").addEventListener("click", () => {
+        openModal("about-modal-backdrop");
+      });
+
+      // Switch from companions screen to quiz
+      const companionsScreen = $("companions-screen");
+      const mainContent = $("main-content");
+      const startQuestionsBtn = $("start-questions-btn");
+      if (startQuestionsBtn) {
+        startQuestionsBtn.addEventListener("click", () => {
+          if (companionsScreen) companionsScreen.classList.add("hidden");
+          if (mainContent) mainContent.classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      $("prev-question").addEventListener("click", goToPrevQuestion);
+      $("next-question").addEventListener("click", goToNextQuestion);
+
+      $("nav-questions").addEventListener("click", () => {
+        focusQuestions();
+      });
+
+      $("nav-games").addEventListener("click", () => {
+        showGame();
+      });
+
+      $("nav-resources").addEventListener("click", () => {
+        openModal("resources-modal-backdrop");
+      });
+
+      $("nav-about").addEventListener("click", () => {
+        openModal("about-modal-backdrop");
+      });
+
+      $("nav-settings").addEventListener("click", () => {
+        openModal("settings-modal-backdrop");
+      });
+
+      document.querySelectorAll(".close-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-close-modal");
+          if (id) closeModal(id);
+        });
+      });
+
+      $("theme-select").addEventListener("change", (e) => {
+        setTheme(e.target.value);
+      });
+
+      $("ambient-select").addEventListener("change", handleAmbientChange);
+      $("volume-slider").addEventListener("input", handleAmbientChange);
+
+      const ambientFileInput = $("ambient-file-input");
+      if (ambientFileInput) {
+        ambientFileInput.addEventListener("change", handleAmbientFileUpload);
+      }
+
+      $("save-settings-btn").addEventListener("click", saveSettings);
+
+      const difficultySelect = $("difficulty-select");
+      difficultySelect.addEventListener("change", (e) => {
+        currentDifficulty = e.target.value;
+        localStorage.setItem("quizDifficulty", currentDifficulty);
+        buildQuestionsForDifficulty();
+      });
+
+      // Clickable companion clouds -> open detail modal
+      const companionModalTitle = $("companion-modal-title");
+      const companionModalBody = $("companion-modal-body");
+
+      document.querySelectorAll(".cloud-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const titleEl = card.querySelector("h3");
+          const bodyEl = card.querySelector("p");
+          const extra = card.getAttribute("data-extra") || "";
+          const titleText = titleEl ? titleEl.textContent.trim() : "الصحابي الجليل";
+          const shortText = bodyEl ? bodyEl.textContent.trim() : "";
+
+          if (companionModalTitle) companionModalTitle.textContent = titleText;
+          if (companionModalBody) companionModalBody.textContent = extra || shortText;
+
+          openModal("companion-modal-backdrop");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
